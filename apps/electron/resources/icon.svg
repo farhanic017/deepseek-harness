@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="48" fill="url(#bg)"/>
+  <path d="M64 128 L100 164 L192 72" stroke="url(#accent)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="100" cy="164" r="12" fill="url(#accent)"/>
+  <circle cx="192" cy="72" r="12" fill="url(#accent)"/>
+  <circle cx="64" cy="128" r="12" fill="url(#accent)"/>
+  <text x="128" y="210" font-family="system-ui, sans-serif" font-size="28" font-weight="600" fill="#00d4aa" text-anchor="middle">DSH</text>
+</svg>

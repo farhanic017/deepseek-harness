@@ -1,0 +1,55 @@
+# Electron app patch layer — applied after dsh-base
+# This replaces the web server + static hosting with Electron app
+
+# Remove web server and frontend static hosting
+- op: disable
+  id: webServer
+- op: disable
+  id: frontend-static
+
+# Mount Electron boot manifest provider
+- op: add
+  entries:
+    - plugin: '@deepseek-ai/dsh-host-electron-boot'
+      before: '*'
+
+# Mount Electron app as the main entry
+- op: add
+  entries:
+    - plugin: '@deepseek-ai/dsh-electron'
+      before: '*'
+
+# Electron-specific shell environment
+- op: add
+  target: shellEnv
+  entries:
+    - plugin: '@deepseek-ai/dsh-electron/shell-env'
+      before: '*'
+
+# Electron-specific directory picker (native)
+- op: add
+  target: directoryPicker
+  entries:
+    - plugin: '@deepseek-ai/dsh-host-directory-picker-native'
+      before: '*'
+
+# Use native terminal (not web-based)
+- op: add
+  target: terminal
+  entries:
+    - plugin: '@deepseek-ai/dsh-terminal-bash'
+      before: '*'
+
+# Use native subprocess
+- op: add
+  target: subprocess
+  entries:
+    - plugin: '@deepseek-ai/dsh-subprocess-local'
+      before: '*'
+
+# Use native filesystem
+- op: add
+  target: fs
+  entries:
+    - plugin: '@deepseek-ai/dsh-fs-local'
+      before: '*'
