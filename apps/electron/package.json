@@ -185,7 +185,7 @@
         ]
       },
       {
-        "from": "C:/Users/Farhan/AppData/Local/Programs/DeepSeek Harness/resources/workspace",
+        "from": "dist/workspace",
         "to": "workspace",
         "filter": [
           "**/*"
