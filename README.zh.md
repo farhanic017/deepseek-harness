@@ -15,19 +15,36 @@ DeepSeek Harness 目前处于 _开发者预览_ 阶段，迭代迅速。**将会
 
 ## 运行
 
-### 从 `npm` 运行
+### 桌面应用（Windows — 推荐）
 
-安装 `Node.js`，然后运行：
+**直接桌面，无需终端或浏览器。** Electron 应用在内部捆绑了实时服务器 — 双击即可运行。
+
+1. **下载安装程序：** 前往 [**Releases**](https://github.com/farhanic017/deepseek-harness/releases) → `DeepSeek Harness Setup 0.8.0.exe`（96 MB）→ 安装
+2. **启动** 开始菜单 / 桌面 — 应用在系统分配的端口上启动自己的实时服务器，并原生打开 harness UI。无需 `npx`，无需记住 `http://127.0.0.1:3080`。
+
+从源码构建桌面版：
+
+```sh
+git clone https://github.com/farhanic017/deepseek-harness.git
+cd deepseek-harness
+pnpm install
+pnpm run build
+pnpm --filter @deepseek-ai/dsh-electron run build
+pnpm --filter @deepseek-ai/dsh-electron exec electron-builder --win --x64  # → dist/installer/DeepSeek Harness Setup 0.8.0.exe
+```
+
+### 网页实时服务器（终端 + 浏览器）
+
+原始网页流程仍然可用 — 桌面版只是将其封装：
+
+**从 `npm`：**
 
 ```sh
 npx @deepseek-ai/dsh web
 ```
+启动 Web UI 实时服务器，默认服务于 `http://127.0.0.1:3080`。在浏览器中打开该地址。参阅 [Web UI 指南](docs/user/guide/index.md)。
 
-该命令会启动 Web UI，默认服务于 `http://127.0.0.1:3080`。请参阅 [Web UI 指南](docs/user/guide/index.md)。
-
-### 从源码运行
-
-从仓库检出运行：
+**从源码：**
 
 ```sh
 git clone https://github.com/deepseek-ai/deepseek-harness.git
@@ -35,6 +52,7 @@ cd deepseek-harness
 pnpm install
 pnpm run build
 pnpm dsh web
+# 然后打开 http://127.0.0.1:3080
 ```
 
 ## 社区与支持

@@ -15,19 +15,38 @@ DeepSeek Harness is currently in _developer preview_ and is iterating rapidly. *
 
 ## Run
 
-### Run from `npm`
+### Desktop App (Windows — Recommended)
 
-Install `Node.js`, then run:
+**Direct desktop, no terminal or browser needed.** The Electron app bundles the live server internally — double-click and go.
+
+1. **Download installer:** Go to [**Releases**](https://github.com/farhanic017/deepseek-harness/releases) → `DeepSeek Harness Setup 0.8.0.exe` (96 MB) → install
+2. **Launch** from Start Menu / Desktop — the app starts its own live server on an OS-assigned port and opens the harness UI natively. No `npx`, no `http://127.0.0.1:3080` to remember.
+
+Build the desktop from source:
+
+```sh
+git clone https://github.com/farhanic017/deepseek-harness.git
+cd deepseek-harness
+pnpm install
+pnpm run build
+pnpm --filter @deepseek-ai/dsh-electron run build        # web + main/preload
+pnpm --filter @deepseek-ai/dsh-electron exec electron-builder --dir --win --x64  # unpacked
+# or full installer:
+pnpm --filter @deepseek-ai/dsh-electron exec electron-builder --win --x64  # → dist/installer/DeepSeek Harness Setup 0.8.0.exe
+```
+
+### Run the Web Live Server (Terminal + Browser)
+
+The original web flow still works — the desktop just wraps it:
+
+**From `npm`:**
 
 ```sh
 npx @deepseek-ai/dsh web
 ```
+Starts the Web UI live server, served at `http://127.0.0.1:3080` by default. Open that address in your browser. See [Web UI guide](docs/user/guide/index.md).
 
-The command starts the Web UI, served at `http://127.0.0.1:3080` by default. See [Web UI guide](docs/user/guide/index.md).
-
-### Run from source
-
-To run from a repository checkout:
+**From source:**
 
 ```sh
 git clone https://github.com/deepseek-ai/deepseek-harness.git
@@ -35,6 +54,7 @@ cd deepseek-harness
 pnpm install
 pnpm run build
 pnpm dsh web
+# then open http://127.0.0.1:3080
 ```
 
 ## Community and support
