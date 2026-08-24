@@ -15,47 +15,18 @@ DeepSeek Harness is currently in _developer preview_ and is iterating rapidly. *
 
 ## Run
 
-### Desktop App (Windows — Recommended)
+### Desktop App (Windows)
 
-**Direct desktop, no terminal or browser needed.** The Electron app bundles the live server internally — double-click and go.
+**No terminal, no browser.** Download and double-click:
 
-1. **Download installer:** Go to [**Releases**](https://github.com/farhanic017/deepseek-harness/releases) → `DeepSeek Harness Setup 0.8.0.exe` (96 MB) → install
-2. **Launch** from Start Menu / Desktop — the app starts its own live server on an OS-assigned port and opens the harness UI natively. No `npx`, no `http://127.0.0.1:3080` to remember.
+1. Go to [**Releases**](https://github.com/farhanic017/deepseek-harness/releases) → `DeepSeek Harness Setup 0.8.0.exe` (96 MB) → install
+2. Launch from Start Menu — the app starts its own live server internally and opens the harness UI natively.
 
-Build the desktop from source:
+## New Features (Desktop)
 
-```sh
-git clone https://github.com/farhanic017/deepseek-harness.git
-cd deepseek-harness
-pnpm install
-pnpm run build
-pnpm --filter @deepseek-ai/dsh-electron run build        # web + main/preload
-pnpm --filter @deepseek-ai/dsh-electron exec electron-builder --dir --win --x64  # unpacked
-# or full installer:
-pnpm --filter @deepseek-ai/dsh-electron exec electron-builder --win --x64  # → dist/installer/DeepSeek Harness Setup 0.8.0.exe
-```
-
-### Run the Web Live Server (Terminal + Browser)
-
-The original web flow still works — the desktop just wraps it:
-
-**From `npm`:**
-
-```sh
-npx @deepseek-ai/dsh web
-```
-Starts the Web UI live server, served at `http://127.0.0.1:3080` by default. Open that address in your browser. See [Web UI guide](docs/user/guide/index.md).
-
-**From source:**
-
-```sh
-git clone https://github.com/deepseek-ai/deepseek-harness.git
-cd deepseek-harness
-pnpm install
-pnpm run build
-pnpm dsh web
-# then open http://127.0.0.1:3080
-```
+- **Workspace unmount/detach** — Remove any workspace from the list without deleting files on disk. Hero chip now shows a **×** to detach the current workspace, and the sidebar header has a **trash** button to remove selected workspaces. The old `Choose a workspace` gate is gone — chat works immediately even with no folder picked.
+- **Plugins on/off toggle without opening configuration files** — Toggle any plugin directly from the UI (sidebar/plugin inventory) — no need to edit `cordis.yml` or `package.json`. Changes apply live.
+- **Search bar in model selector** — Filter models instantly in the composer’s model dropdown (left of Send). Works with or without a workspace, and keeps the composer live even when a model block is raised.
 
 ## Community and support
 

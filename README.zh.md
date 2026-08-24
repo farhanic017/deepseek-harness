@@ -15,45 +15,18 @@ DeepSeek Harness 目前处于 _开发者预览_ 阶段，迭代迅速。**将会
 
 ## 运行
 
-### 桌面应用（Windows — 推荐）
+### 桌面应用（Windows）
 
-**直接桌面，无需终端或浏览器。** Electron 应用在内部捆绑了实时服务器 — 双击即可运行。
+**无需终端或浏览器。** 下载后双击即可：
 
-1. **下载安装程序：** 前往 [**Releases**](https://github.com/farhanic017/deepseek-harness/releases) → `DeepSeek Harness Setup 0.8.0.exe`（96 MB）→ 安装
-2. **启动** 开始菜单 / 桌面 — 应用在系统分配的端口上启动自己的实时服务器，并原生打开 harness UI。无需 `npx`，无需记住 `http://127.0.0.1:3080`。
+1. 前往 [**Releases**](https://github.com/farhanic017/deepseek-harness/releases) → `DeepSeek Harness Setup 0.8.0.exe`（96 MB）→ 安装
+2. 从开始菜单启动 — 应用在内部启动实时服务器并原生打开 harness UI。
 
-从源码构建桌面版：
+## 新功能（桌面版）
 
-```sh
-git clone https://github.com/farhanic017/deepseek-harness.git
-cd deepseek-harness
-pnpm install
-pnpm run build
-pnpm --filter @deepseek-ai/dsh-electron run build
-pnpm --filter @deepseek-ai/dsh-electron exec electron-builder --win --x64  # → dist/installer/DeepSeek Harness Setup 0.8.0.exe
-```
-
-### 网页实时服务器（终端 + 浏览器）
-
-原始网页流程仍然可用 — 桌面版只是将其封装：
-
-**从 `npm`：**
-
-```sh
-npx @deepseek-ai/dsh web
-```
-启动 Web UI 实时服务器，默认服务于 `http://127.0.0.1:3080`。在浏览器中打开该地址。参阅 [Web UI 指南](docs/user/guide/index.md)。
-
-**从源码：**
-
-```sh
-git clone https://github.com/deepseek-ai/deepseek-harness.git
-cd deepseek-harness
-pnpm install
-pnpm run build
-pnpm dsh web
-# 然后打开 http://127.0.0.1:3080
-```
+- **工作区卸载/分离** — 无需删除磁盘文件即可从列表中移除任意工作区。Hero 区的芯片旁会出现 **×** 按钮用于分离当前工作区，侧边栏顶部也有 **垃圾桶** 按钮可移除选中的工作区。旧的 `选择工作区` 阻塞已移除 — 即使未选择文件夹也能立即聊天。
+- **插件开关切换，无需打开配置文件** — 直接在 UI（侧边栏/插件清单）中切换任意插件的启用/禁用 — 无需编辑 `cordis.yml` 或 `package.json`，改动实时生效。
+- **模型选择器中的搜索栏** — 在编辑器模型下拉框（发送按钮左侧）中即时筛选模型。有无工作区均可使用，即使出现模型相关的阻塞提示，编辑器仍保持可用。
 
 ## 社区与支持
 
