@@ -42,3 +42,9 @@ worktrees/
 apps/electron/dist/
 
 apps/electron/dist/installer/
+
+.freebuff/
+fix-icon.mjs
+*.bak
+*.noworkspace.json
+
